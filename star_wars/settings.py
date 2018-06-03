@@ -16,6 +16,7 @@ import sys
 sys.path.insert(0, os.path.abspath('..'))
 # Hack for tests.
 sys.path.insert(0, os.path.abspath('.'))
+from os import  path
 
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
@@ -36,8 +37,11 @@ SECRET_KEY = 'g9)pt*oo_6=ku&3^1vd#2cnhao%=h53(vn@-8-0^ld8*8bbsl%'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+import dj_database_url
 
-
+def rel_path(*subpaths):
+    """Construct the full path given a relative path."""
+    return path.join(BASE_DIR, *subpaths)
 # Application definition
 
 INSTALLED_APPS = [
@@ -99,7 +103,8 @@ DATABASES = {
         'host': os.getenv("DATABASE_HOST"),
         'username': os.getenv("DATABASE_USERNAME"),
         'password': os.getenv("DATABASE_PASSWORD")
-    }
+    },
+
 }
 
 
@@ -164,6 +169,13 @@ NOSE_ARGS = [
 ]
 
 
+
+if os.getenv("CI_TEST") == "TRUE":
+    DATABASES = {
+    'default':
+        dj_database_url.config(
+            default='sqlite:///' + rel_path('testapp.sqlite3'))
+}
 
 STATIC_URL = '/static/'
 

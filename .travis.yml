@@ -1,0 +1,15 @@
+language: python
+python:
+- '3.6'
+install:
+- pip install pipenv
+- pipenv install
+script:
+- python manage.py migrate
+deploy:
+  provider: heroku
+  api_key:
+    secure: AB/My33ITfIFtlCMiVUclIJ4YiVI8sEqxLyP9YmDoSmKFrUN9Ui18A+vaxZiuuKbVNyv/1/mrz6L+luTsxUaXRNs7zfxs8zUZh7jUHTUqbIhf4Nvuozn5tAZh4mcF0j1oa6dy3cTQfExHAxRvmtcZ7Ey8E/zgUUOPr0iIWPU4lhT8DLDVeM+EYzsG2wmyoIleEShOb7Eo2IyGq4twbzWW9IhfJJYrkumikyBnEJUOOdZIHaaAQ6MUfBz70iFCw4Y8DcIuTKwe2bfo/jhs5qNfK58IGqNIxlt2sByVBX7QPMJeT3kBbCWamigI9l3ylFAF0NPwGvz6pWQsWxM1uaUqlx+b5Yy7LaeYS74cKpWIYIvJ5PakBM7o/JbBZhkEI+TT3uLwHgTVt/MsoT9kCJk2iVTrpcq036hQA8og2TC/ZUO5fOhg0gf9S/+TOj1gyj3shOgvCSo9eNrtgIPNb4JSe0T7kdolZP0bo8SqhwkWqKV7hV0FeMZC0RgVCNFBwoeqilk1+Ef/sjIUJseLYCutnhdPjm9mcrkQG0TudVHrhbNIFYIHJuMuoqc3tGFs6xBvpw3v/jOdF5SIsV6Iud8zwh6RXbqqLqYHjYdhmRlXgWNg1HtNglnyclxuov+OWuRHHtwAVhy7n/nn7ac54rKVV7JbZXl6MYSrR0EIsVW8Gw=
+  app: star-wars-viniro
+  on:
+    repo: vinicius91/star_wars

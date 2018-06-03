@@ -58,3 +58,5 @@ docs/_build/
 target/
 
 star_wars/\.env
+
+testapp\.sqlite3
