@@ -42,7 +42,7 @@ sqlparse = "==0.2.4"
 whitenoise = "==3.3.1"
 twine = "*"
 pytest = "*"
-Django = "==2.0"
+Django = "==2.2.13"
 pytest-django = "*"
 django-configurations = "*"
 
